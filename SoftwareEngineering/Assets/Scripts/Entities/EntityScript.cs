@@ -95,6 +95,7 @@ public class EntityScript : MonoBehaviour
     }
 
 
+
     /// Attacking and Damaging
 
     // Damages this entity based on the imputted amount.
@@ -171,41 +172,79 @@ public class EntityScript : MonoBehaviour
     }
 
 
+
     /// Effects
 
-    // Incomplete function.
     // Adds a positive/negative effect to this entity.
-    public void ApplyEffect()
+    // @return Returns a reference of the added component (or pre-existing component).
+    public T ApplyEffect<T>() where T : Effect
     {
-        // Test if the entity already has the effect.
-            // If true, check to see the the new effect duration is longer than the old effect duration.
-                // If true, set the old effect duration to be equal to the new effect duration.
-                // If false, do nothing.
-            // If false, Add the effect to the list of effects on this entity and start the duration timer.
+        T Comp = GetComponent<T>();
+
+        // Check if this entity already has this effect.
+        if (Comp)
+        {
+            Comp.ResetEffect();
+            return Comp;
+        }
+        else
+        {
+            // If the entity doesn't have this component add it.
+            return gameObject.AddComponent<T>();
+        }
     }
 
 
-    // Incomplete function.
     // Removes a positive/negative effect from this entity.
-    public void RemoveEffect()
+    // @return - Returns true if the component was successfully removed (false if the entity didn't have that effect attached).
+    public bool RemoveEffect<T>() where T : Effect
     {
-        // Checks if the entity has that specific effect.
-            // If true, remove that effect.
-            // If false, do nothing.
+        T Comp = GetComponent<T>();
+        if (Comp)
+        {
+            Destroy(Comp);
+            return true;
+        }
+        return false;
     }
 
 
     // Removes all positive effects on this entity.
     public void RemoveAllPositiveEffects()
     {
-        // Goes through all positive effects and removes them from this entity (stopping all timers for their effects).
+        Effect[] Effects = GetComponents<Effect>();
+        for (int i = 0; i < Effects.Length; ++i)
+        {
+            if (Effects[i].Type == EEffectType.Positive)
+            {
+                Destroy(Effects[i]);
+            }
+        }
     }
 
 
     // Removes all negative effects on this entity.
     public void RemoveAllNegativeEffects()
     {
-        // Goes through all negative effects and removes them from this entity (stopping all timers for their effects).
+        Effect[] Effects = GetComponents<Effect>();
+        for (int i = 0; i < Effects.Length; ++i)
+        {
+            if (Effects[i].Type == EEffectType.Negative)
+            {
+                Destroy(Effects[i]);
+            }
+        }
+    }
+
+
+    // Removes all effects on this entity.
+    public void RemoveAllEffects()
+    {
+        Effect[] Effects = GetComponents<Effect>();
+        for (int i = 0; i < Effects.Length; ++i)
+        {
+            Destroy(Effects[i]);
+        }
     }
 
 
@@ -228,11 +267,9 @@ public class EntityScript : MonoBehaviour
         if (!IsDead && Controller && Controller.isGrounded)
         {
             JumpVal = JumpStrength * Time.deltaTime;
+            RemoveAllEffects();
         }
     }
-
-  
-    
 
 
 
