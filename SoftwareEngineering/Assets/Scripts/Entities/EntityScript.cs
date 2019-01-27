@@ -54,6 +54,9 @@ public class EntityScript : MonoBehaviour
     // Represents if the entity has been damaged (cannot be damaged when active).
     private bool Invonerable;
 
+    // The representation of the jumping process.
+    private float JumpVal;
+
     
 
     /// Component Variables
@@ -69,7 +72,7 @@ public class EntityScript : MonoBehaviour
     /// Functions
 
 	// Use this for initialization
-	protected virtual void Start ()
+	protected virtual void Start()
     {
         Anim = GetComponent<Animator>();
         Controller = GetComponent<CharacterController>();
@@ -79,6 +82,17 @@ public class EntityScript : MonoBehaviour
             Health = MaxHealth;
         }
 	}
+
+
+    protected virtual void FixedUpdate()
+    {
+        // Apply gravity.
+        if (Controller && !Controller.isGrounded)
+        {
+            JumpVal -= -Physics.gravity.y * Time.deltaTime;
+            Controller.Move(Vector3.up * JumpVal);
+        }
+    }
 
 
     /// Attacking and Damaging
@@ -198,6 +212,7 @@ public class EntityScript : MonoBehaviour
 
     /// Movement
     
+    // Moves the entity in a direction at their current movement speed.
     public void MoveDirection(Vector3 Direction)
     {
         if (!IsDead && Controller)
@@ -207,12 +222,13 @@ public class EntityScript : MonoBehaviour
     }
 
 
-    
+    // makes the entity jump.
     public void Jump()
     {
+        Debug.Log(Controller.isGrounded);
         if (!IsDead && Controller && Controller.isGrounded)
         {
-            Controller.Move(Vector3.up * JumpStrength);
+            JumpVal = JumpStrength * Time.deltaTime;
         }
     }
 
