@@ -225,7 +225,6 @@ public class EntityScript : MonoBehaviour
     // makes the entity jump.
     public void Jump()
     {
-        Debug.Log(Controller.isGrounded);
         if (!IsDead && Controller && Controller.isGrounded)
         {
             JumpVal = JumpStrength * Time.deltaTime;

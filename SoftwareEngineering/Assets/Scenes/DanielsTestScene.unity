@@ -152,15 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1471088456107982, guid: 0bdf7fa6d9289f04e900b3b9b0a64b87, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114693189989032894, guid: 0bdf7fa6d9289f04e900b3b9b0a64b87,
-        type: 2}
-      propertyPath: JumpStrength
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bdf7fa6d9289f04e900b3b9b0a64b87, type: 2}
   m_IsPrefabParent: 0
