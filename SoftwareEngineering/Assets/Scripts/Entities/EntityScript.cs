@@ -6,12 +6,19 @@ public class EntityScript : MonoBehaviour
 {
     /// Data Storage containers
 
-    // Stores all the information for when the entity is attacked.    
+    // Stores all the information for when an entity is attacked.    
     public struct SDamageInfo
     {
+        // The amount of health the attacked entity has left after the attack.
         public float RemainingHealth;
+
+        // The total amount of damgae that was applied to the target.
         public float DamageDealt;
+
+        // Is true if the attacked entity died from the attack.
         public bool KilledEntity;
+
+        // Is true if the attack was ignored in any way (or dealt no damage).
         public bool AttackIgnored;
     }
 
@@ -22,10 +29,10 @@ public class EntityScript : MonoBehaviour
     // Represents if this entity is alive or not.
     public bool IsDead;
 
-    // Determines if this entity can be hurt.
+    // Determines if this entity can be Damaged.
     public bool Invincible;
 
-    // Determines how long this entity stays invonerable after being attaked.
+    // Determines how long this entity stays invulnerable after being attaked.
     public float ImmunityFrameTime = 0.8f;
 
     // The maximum health this entity can have.
@@ -52,9 +59,9 @@ public class EntityScript : MonoBehaviour
     private float Health;
 
     // Represents if the entity has been damaged (cannot be damaged when active).
-    private bool Invonerable;
+    private bool Invulnerable;
 
-    // The representation of the jumping process.
+    // Holds the information on the velocity going up/down.
     private float JumpVal;
 
     
@@ -103,7 +110,7 @@ public class EntityScript : MonoBehaviour
     // @return - A struct Representing the damage the entity applied along with how much health the entity has left after the attack.
     public SDamageInfo ApplyDamage(float Amount)
     {
-        if (!IsDead && !Invincible && !Invonerable && Amount > 0.0f)
+        if (!IsDead && !Invincible && !Invulnerable && Amount > 0.0f)
         {
             SDamageInfo Info;
             Info.DamageDealt = DamageCalculation(Amount);
@@ -277,9 +284,9 @@ public class EntityScript : MonoBehaviour
 
     private IEnumerator StartImmunityFrames()
     {
-        Invonerable = true;
+        Invulnerable = true;
         yield return new WaitForSeconds(ImmunityFrameTime);
-        Invonerable = false;
+        Invulnerable = false;
     }
 
 
