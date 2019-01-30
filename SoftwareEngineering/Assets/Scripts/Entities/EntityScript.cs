@@ -46,11 +46,12 @@ public class EntityScript : MonoBehaviour
 
 
     /// Protected Variables
-    
-    
-    
+
+
+
     /// Internal Variables
 
+    internal float Sanity = 100.0f;
     
     
     /// Private Variables
@@ -274,7 +275,7 @@ public class EntityScript : MonoBehaviour
         if (!IsDead && Controller && Controller.isGrounded)
         {
             JumpVal = JumpStrength * Time.deltaTime;
-            RemoveAllEffects();
+            ApplyEffect<Effect>();
         }
     }
 

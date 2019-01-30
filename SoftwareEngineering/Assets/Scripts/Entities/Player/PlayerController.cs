@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     // A reference to the attached PlayerScript component.
     PlayerScript Player;
 
+ 
 
 
 
     private void Start()
     {
         Player = GetComponent<PlayerScript>();
+
     }
 
 
