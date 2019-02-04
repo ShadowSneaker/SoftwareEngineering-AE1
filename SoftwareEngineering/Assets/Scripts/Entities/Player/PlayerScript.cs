@@ -41,7 +41,7 @@ public class PlayerScript : EntityScript
             {
                 Debug.Log("Hit");
                 Obj = Hit.transform.GetComponent<InteractableObject>();
-                if (Obj)
+                if (Obj && Obj.Interactable)
                 {
                     FlavourText.text = Obj.FlavourText;
                     ObjectInfo.text = Obj.ObjectInfo;
