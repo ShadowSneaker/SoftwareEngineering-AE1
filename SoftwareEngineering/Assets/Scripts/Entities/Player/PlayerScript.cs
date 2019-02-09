@@ -40,6 +40,18 @@ public class PlayerScript : EntityScript
             if (Hit.collider)
             {
                 Debug.Log("Hit");
+
+                // Interact with objects that trigger on looking.
+                Obj = Hit.transform.GetComponent<LookInteractor>();
+                if (Obj && Obj.Interactable)
+                {
+                    Obj.Interact(this);
+
+                    return;
+                }
+
+
+                // Interact with objects that require the user to press a button.
                 Obj = Hit.transform.GetComponent<InteractableObject>();
                 if (Obj && Obj.Interactable)
                 {

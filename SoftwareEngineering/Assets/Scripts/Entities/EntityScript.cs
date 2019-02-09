@@ -97,6 +97,7 @@ public class EntityScript : MonoBehaviour
         // Apply gravity.
         if (Controller && !Controller.isGrounded)
         {
+            Anim.SetBool("Jump", true);
             JumpVal -= -Physics.gravity.y * Time.deltaTime;
             Controller.Move(Vector3.up * JumpVal);
         }
@@ -118,21 +119,23 @@ public class EntityScript : MonoBehaviour
             Info.AttackIgnored = false;
 
             Health -= Info.DamageDealt;
+            Mathf.Clamp(Health, 0.0f, MaxHealth);
             Info.RemainingHealth = Health;
+
 
             if (Health <= 0.0f)
             {
                 IsDead = true;
                 Info.KilledEntity = true;
                 // Play Death Sound
-                // Play Death animation
+                Anim.SetBool("Dead", true);
 
                 // Drop held items (if any)
             }
             else
             {
                 // Play Hurt Sound
-                // Play hurt animation
+                Anim.SetBool("Hurt", true);
                 StartCoroutine(StartImmunityFrames());
                 Info.KilledEntity = false;
             }
@@ -161,7 +164,7 @@ public class EntityScript : MonoBehaviour
 
                 // Play Revive sound or heal sound
                 // Play heal particle effect
-                // Play revive animation
+                Anim.SetBool("Dead", false);
             }
         }
         else
@@ -170,6 +173,8 @@ public class EntityScript : MonoBehaviour
             // Play heal sound
             // Play heal particle effect
         }
+
+        Mathf.Clamp(Health, 0.0f, MaxHealth);
 
         return Health;
     }

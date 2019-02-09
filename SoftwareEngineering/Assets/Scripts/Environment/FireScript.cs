@@ -23,7 +23,7 @@ public class FireScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        Distance = Vector3.Distance(transform.position, Player.position) / 8;
+        Distance = Vector3.Distance(transform.position, Player.position) / 8 - 0.5f;
 
         if (Distance <= Range)
         {
