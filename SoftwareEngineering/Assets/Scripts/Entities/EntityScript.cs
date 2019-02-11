@@ -38,6 +38,9 @@ public class EntityScript : MonoBehaviour
     // The maximum health this entity can have.
     public float MaxHealth = 100.0f;
 
+    // The maximum amount of sanity this unit can have.
+    public float MaxSanity = 100.0f;
+
     // How fast this entity moves in the world.
     public float MovementSpeed = 10.0f;
 
@@ -51,7 +54,7 @@ public class EntityScript : MonoBehaviour
 
     /// Internal Variables
 
-    internal float Sanity = 100.0f;
+    internal float Sanity;
     
     
     /// Private Variables
@@ -88,6 +91,7 @@ public class EntityScript : MonoBehaviour
         if (!IsDead)
         {
             Health = MaxHealth;
+            Sanity = MaxSanity;
         }
 	}
 
@@ -119,14 +123,15 @@ public class EntityScript : MonoBehaviour
             Info.AttackIgnored = false;
 
             Health -= Info.DamageDealt;
-            Mathf.Clamp(Health, 0.0f, MaxHealth);
+            Health = Mathf.Clamp(Health, 0.0f, MaxHealth);
             Info.RemainingHealth = Health;
-
+            Debug.Log(Amount);
 
             if (Health <= 0.0f)
             {
                 IsDead = true;
                 Info.KilledEntity = true;
+                OnDeath();
                 // Play Death Sound
                 Anim.SetBool("Dead", true);
 
@@ -151,6 +156,33 @@ public class EntityScript : MonoBehaviour
             return Info;
         }
     }
+
+
+    public void LowerSanity(float Amount)
+    {
+        if (!IsDead && Amount > 0.0f)
+        {
+            Sanity -= Amount;
+            Sanity = Mathf.Clamp(Sanity, 0.0f, MaxSanity);
+
+            if (Sanity <= 0.0f)
+            {
+                IsDead = true;
+                OnDeath();
+
+                Anim.SetBool("Insanity", true);
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+
+    // Overrideable function, Runs when the player dies/ runs out of sanity.
+    protected virtual void OnDeath()
+    {}
 
 
     public float ApplyHeal(float Amount, bool IsRevive = false)
@@ -279,8 +311,8 @@ public class EntityScript : MonoBehaviour
     {
         if (!IsDead && Controller && Controller.isGrounded)
         {
-            JumpVal = JumpStrength * Time.deltaTime;
-            ApplyEffect<Effect>();
+            //JumpVal = JumpStrength * Time.deltaTime;
+            ApplyDamage(MaxHealth / 2);
         }
     }
 
