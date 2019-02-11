@@ -19,7 +19,7 @@ public class PlayerScript : EntityScript
     RaycastHit Hit;
     InteractableObject Obj;
 
-
+    PlayerUI UI;
 
 
     // Use this for initialization
@@ -27,6 +27,7 @@ public class PlayerScript : EntityScript
     {
         base.Start();
         Cam = GetComponent<CameraController>();
+        UI = FindObjectOfType<PlayerUI>();
 	}
 
 
@@ -79,4 +80,12 @@ public class PlayerScript : EntityScript
         }
     }
 
+
+    protected override void OnDeath()
+    {
+        if (UI)
+        {
+            UI.DisplayGameOver();
+        }
+    }
 }
