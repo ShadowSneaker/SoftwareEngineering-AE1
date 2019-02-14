@@ -6,11 +6,11 @@ public class LightningScript : MonoBehaviour {
 
     public GameObject Lightning;
     public Vector2 lightningTime;
-    private float Timer;
+    public float Timer;
     private float LightningFadeTime;
-    private bool LightningFade;
-    private bool LightningSecondFade;
-    private bool countdown;
+    public bool LightningFade;
+    public bool LightningSecondFade;
+    public bool countdown;
     private float SecondLightingFadeTime;
 
 	// Use this for initialization
@@ -34,6 +34,7 @@ public class LightningScript : MonoBehaviour {
                 Lightning.SetActive(true);
                 countdown = false;
                 LightningFade = true;
+                LightningFadeTime = 0.1f;
             }
         }
         if(LightningFade)
@@ -41,14 +42,17 @@ public class LightningScript : MonoBehaviour {
             LightningFadeTime -= Time.deltaTime;
             if(LightningFadeTime <= 0)
             {
-                LightningFade = false;
-                LightningSecondFade = true;
+                LightningFade = false;               
                 LightningFadeTime = 0.1f;
+                if(Timer <= 0)
+                {
+                    LightningSecondFade = true;
+                }
                 Lightning.SetActive(false);
-                Timer = -0.1f;
+                
             }
         }
-        if (LightningSecondFade && Timer < 0)
+        if (LightningSecondFade && Timer <= 0)
         {
             LightningFadeTime -= Time.deltaTime;
             if (LightningFadeTime <= 0)
