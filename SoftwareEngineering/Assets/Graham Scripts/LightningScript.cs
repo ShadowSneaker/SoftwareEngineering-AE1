@@ -10,6 +10,7 @@ public class LightningScript : MonoBehaviour {
     private float LightningFadeTime;
     private bool LightningFade;
     private bool LightningSecondFade;
+    private bool countdown;
     private float SecondLightingFadeTime;
 
 	// Use this for initialization
@@ -18,18 +19,22 @@ public class LightningScript : MonoBehaviour {
         Timer = Random.Range(lightningTime.x, lightningTime.y);
         LightningFade = false;
         LightningSecondFade = false;
+        countdown = true;
         LightningFadeTime = 0.1f;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        Timer -= Time.deltaTime;
-        if(Timer <= 0)
+        if (countdown)
         {
-            Lightning.SetActive(true);
-            
-            LightningFade = true;
+            Timer -= Time.deltaTime;
+            if (Timer <= 0)
+            {
+                Lightning.SetActive(true);
+                countdown = false;
+                LightningFade = true;
+            }
         }
         if(LightningFade)
         {
@@ -39,7 +44,8 @@ public class LightningScript : MonoBehaviour {
                 LightningFade = false;
                 LightningSecondFade = true;
                 LightningFadeTime = 0.1f;
-                Lightning.SetActive(false);             
+                Lightning.SetActive(false);
+                Timer = -0.1f;
             }
         }
         if (LightningSecondFade && Timer < 0)
@@ -47,10 +53,12 @@ public class LightningScript : MonoBehaviour {
             LightningFadeTime -= Time.deltaTime;
             if (LightningFadeTime <= 0)
             {
+                LightningFade = true;
                 LightningSecondFade = false;
                 LightningFadeTime = 0.1f;
                 Lightning.SetActive(true);
                 Timer = Random.Range(lightningTime.x, lightningTime.y);
+                countdown = true;
             }
         }
 
