@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 33558987}
   - component: {fileID: 33558986}
   - component: {fileID: 33558985}
+  - component: {fileID: 33558989}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -361,12 +362,30 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 33558984}
   m_LocalRotation: {x: -0.098968804, y: 0.81694084, z: 0.14734367, w: 0.5487283}
-  m_LocalPosition: {x: 2.33, y: 6.78, z: 50.27}
+  m_LocalPosition: {x: 2.433, y: 6.821, z: 50.228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -20.448002, y: 112.22301, z: 0}
+--- !u!95 &33558989
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 33558984}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdb6905d9a5aad1418cb9a57279f4066, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &50311686
 Prefab:
   m_ObjectHideFlags: 0
@@ -489,10 +508,10 @@ RectTransform:
   m_Father: {fileID: 2139664965}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -25}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116698741
 MonoBehaviour:
@@ -526,7 +545,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Settings
 --- !u!222 &116698742
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1179,8 +1198,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1520, y: 734}
+  m_AnchoredPosition: {x: -0.014969, y: -0.0003891}
+  m_SizeDelta: {x: 800, y: 523.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &641229287
 MonoBehaviour:
@@ -1201,8 +1220,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 550, y: 0}
+  m_CellSize: {x: 100, y: 50}
+  m_Spacing: {x: 200, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &641229288
@@ -1874,10 +1893,10 @@ RectTransform:
   m_Father: {fileID: 2147133028}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -25}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073746128
 MonoBehaviour:
@@ -1911,7 +1930,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Floor Select
 --- !u!222 &1073746129
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2343,6 +2362,7 @@ GameObject:
   - component: {fileID: 1486893752}
   - component: {fileID: 1486893751}
   - component: {fileID: 1486893750}
+  - component: {fileID: 1486893754}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2377,7 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2426,6 +2446,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1486893754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1486893749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45520fe85975c9c42b52937a5a4ea603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraAnim: {fileID: 33558989}
+  waitTime: 5
+  BeginingScene: Byrons Testing
 --- !u!1 &1549666521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,10 +2490,10 @@ RectTransform:
   m_Father: {fileID: 1719573381}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -25}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1549666523
 MonoBehaviour:
@@ -2493,7 +2527,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Start Game
 --- !u!222 &1549666524
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2630,7 +2664,7 @@ GameObject:
   - component: {fileID: 1719573383}
   - component: {fileID: 1719573382}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Begin game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2693,7 +2727,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1719573383}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1486893754}
+        m_MethodName: BeginGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1719573383
@@ -3141,7 +3186,7 @@ GameObject:
   - component: {fileID: 2139664967}
   - component: {fileID: 2139664966}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3252,7 +3297,7 @@ GameObject:
   - component: {fileID: 2147133030}
   - component: {fileID: 2147133029}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Load scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
