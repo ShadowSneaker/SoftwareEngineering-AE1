@@ -29,7 +29,7 @@ public class PlayerUI : MonoBehaviour
             if (!GameOverAnim)
                 GameOverAnim = GameOverImage.GetComponent<Animation>();
 
-            GameOverAnim.Play();
+            GameOverAnim.Play(GameOverAnim.clip.name);
         }
     }
 }

@@ -140,7 +140,7 @@ public class EntityScript : MonoBehaviour
             else
             {
                 // Play Hurt Sound
-                Anim.SetBool("Hurt", true);
+                //Anim.SetBool("Hurt", true);
                 StartCoroutine(StartImmunityFrames());
                 Info.KilledEntity = false;
             }

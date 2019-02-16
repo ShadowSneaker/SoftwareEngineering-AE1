@@ -8,24 +8,73 @@ ModelImporter:
     100004: pPipe3
     100006: pPipe5
     100008: //RootNode
+    100010: pCube18
+    100012: pCube20
+    100014: pCube21
+    100016: pCube22
+    100018: polySurface16
+    100020: polySurface17
+    100022: polySurface18
+    100024: polySurface37
+    100026: polySurface56
+    100028: polySurface65
+    100030: polySurface69
+    100032: polySurface70
+    100034: pPipe12
+    100036: transform100
+    100038: transform101
+    100040: transform102
+    100042: transform103
+    100044: transform104
+    100046: transform105
+    100048: transform106
+    100050: transform107
+    100052: transform108
+    100054: transform99
     400000: pCube3
     400002: pCube7
     400004: pPipe3
     400006: pPipe5
     400008: //RootNode
+    400010: pCube18
+    400012: pCube20
+    400014: pCube21
+    400016: pCube22
+    400018: polySurface16
+    400020: polySurface17
+    400022: polySurface18
+    400024: polySurface37
+    400026: polySurface56
+    400028: polySurface65
+    400030: polySurface69
+    400032: polySurface70
+    400034: pPipe12
+    400036: transform100
+    400038: transform101
+    400040: transform102
+    400042: transform103
+    400044: transform104
+    400046: transform105
+    400048: transform106
+    400050: transform107
+    400052: transform108
+    400054: transform99
     2100000: lambert1
     2300000: pCube3
     2300002: pCube7
     2300004: pPipe3
     2300006: pPipe5
+    2300008: pCube22
     3300000: pCube3
     3300002: pCube7
     3300004: pPipe3
     3300006: pPipe5
+    3300008: pCube22
     4300000: pPipe3
     4300002: pCube3
     4300004: pCube7
     4300006: pPipe5
+    4300008: pCube22
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
