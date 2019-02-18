@@ -12,10 +12,27 @@ public class MainMenu : MonoBehaviour
     public string BeginingScene;
 
     public Image Settings;
-    public Image FloorSelect;
+    public Text StartButton;
+    public Button MainButton; // the button that switches between start button and resume button
 
-    //three functions for the menu
+    private bool InMainMenu;
 
+    // to check wether the player is in game or in main menu
+    private void Awake()
+    {
+        if(SceneManager.GetActiveScene().name == "Main menu scene")
+        {
+            InMainMenu = true;
+            StartButton.text = "Start Game";
+        }
+        else
+        {
+            InMainMenu = false;
+            MainButton.gameObject.SetActive(false);
+            StartButton.text = "Resume Game";
+
+        }
+    }
 
 
     // one to bring up the settings
@@ -28,26 +45,29 @@ public class MainMenu : MonoBehaviour
     //one to begin the game
     public void BeginGame()
     {
-        //CameraAnim = FindObjectOfType<Animator>();
-        CameraAnim.SetBool("BeginGame", true);
+        if (InMainMenu)
+        {
+            //CameraAnim = FindObjectOfType<Animator>();
+            CameraAnim.SetBool("BeginGame", true);
 
-        //then the code to load the scene
-        StartCoroutine(LoadScene(BeginingScene));
-        
+            //then the code to load the scene
+            StartCoroutine(LoadScene(BeginingScene));
+        }
+        else if (!InMainMenu)
+        {
+            // this becomes the resume button
+
+            
+        }
+
     }
 
-    //one to load differnt floors of game
-    public void LoadFloorGame()
+    public void ExitGame()
     {
-        // this will have the pannel appear
-        FloorSelect.gameObject.SetActive(true);
+        Application.Quit();
     }
 
-    public void CloseLoadFloorPanel()
-    {
-        // makes the load floor panel disapear
-        FloorSelect.gameObject.SetActive(false);
-    }
+   
 
     public void CloseSettingsPanel()
     {
