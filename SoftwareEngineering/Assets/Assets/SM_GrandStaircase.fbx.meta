@@ -31,6 +31,7 @@ ModelImporter:
     100050: transform107
     100052: transform108
     100054: transform99
+    100056: COL_Staircase
     400000: pCube3
     400002: pCube7
     400004: pPipe3
@@ -59,22 +60,29 @@ ModelImporter:
     400050: transform107
     400052: transform108
     400054: transform99
+    400056: COL_Staircase
     2100000: lambert1
     2300000: pCube3
     2300002: pCube7
     2300004: pPipe3
     2300006: pPipe5
     2300008: pCube22
+    2300010: COL_Staircase
+    2300012: //RootNode
     3300000: pCube3
     3300002: pCube7
     3300004: pPipe3
     3300006: pPipe5
     3300008: pCube22
+    3300010: COL_Staircase
+    3300012: //RootNode
     4300000: pPipe3
     4300002: pCube3
     4300004: pCube7
     4300006: pPipe5
     4300008: pCube22
+    4300010: SM_Staircase
+    4300012: COL_Staircase
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
