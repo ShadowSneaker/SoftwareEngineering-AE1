@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RoomAItem
+  - RoomBItem
+  - RoomCItem
+  - RoomDItem
+  - RoomEItem
+  - RoomFItem
+  - RoomGItem
+  - RoomHubItem
   layers:
   - Default
   - TransparentFX

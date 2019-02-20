@@ -8,8 +8,8 @@ public class NPC : MonoBehaviour {
 
 
     private EntityScript NPCEntity;
-    
-    
+
+
     //nodes for the bottom floor
     public Transform Node1;
     public Transform Node2;
@@ -19,6 +19,10 @@ public class NPC : MonoBehaviour {
     public Transform Node6;
     public Transform Node7;
     public Transform TheHub;
+
+
+    public Transform[] Itemnodes;
+    
 
     // the navigation mesh the AI will use
     private NavMeshAgent Navigation;
@@ -33,6 +37,8 @@ public class NPC : MonoBehaviour {
     enum State {Idle, Navigation, Interaction, Event }; // enum to tell the Ai what state it is in to determine what it does
     enum Node {AtNode1, AtNode2, AtNode3, AtNode4, AtNode5, AtNode6, AtNode7, AtHub }; // tell the Ai what part of the room the Ai is in
     enum Movement {Node1, Node2, Node3, Node4, Node5, Node6, Node7, Hub } // to tell the AI where to go next
+
+
 
     State MyState; // AI's state
     Node CurrentNode; // the Current node the AI is at
@@ -74,6 +80,11 @@ public class NPC : MonoBehaviour {
                         MoveOn = false;
                     break;
                 }
+                case (2):
+                {
+                        MyState = State.Interaction;
+                        break;
+                }
                 
             }
         }
@@ -87,7 +98,135 @@ public class NPC : MonoBehaviour {
             }
             case State.Interaction:
             {
-                    
+
+                switch(CurrentNode)
+                {
+                        case Node.AtHub:
+                        {
+                                
+
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if(T.gameObject.CompareTag("RoomHubItem"))
+                                    {
+                                       if(T.GetComponent<InteractableObject>().Interactable)
+                                       {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                       }
+                                    }
+                                }
+
+                            break;
+                        }
+                        case Node.AtNode1:
+                        {
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if (T.gameObject.CompareTag("RoomAItem"))
+                                    {
+                                        if (T.GetComponent<InteractableObject>().Interactable)
+                                        {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        case Node.AtNode2:
+                        {
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if (T.gameObject.CompareTag("RoomBItem"))
+                                    {
+                                        if (T.GetComponent<InteractableObject>().Interactable)
+                                        {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        case Node.AtNode3:
+                        {
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if (T.gameObject.CompareTag("RoomCItem"))
+                                    {
+                                        if (T.GetComponent<InteractableObject>().Interactable)
+                                        {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        case Node.AtNode4:
+                        {
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if (T.gameObject.CompareTag("RoomDItem"))
+                                    {
+                                        if (T.GetComponent<InteractableObject>().Interactable)
+                                        {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        case Node.AtNode5:
+                        {
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if (T.gameObject.CompareTag("RoomEItem"))
+                                    {
+                                        if (T.GetComponent<InteractableObject>().Interactable)
+                                        {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        case Node.AtNode6:
+                        {
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if (T.gameObject.CompareTag("RoomFItem"))
+                                    {
+                                        if (T.GetComponent<InteractableObject>().Interactable)
+                                        {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        case Node.AtNode7:
+                        {
+                                foreach (Transform T in Itemnodes)
+                                {
+                                    if (T.gameObject.CompareTag("RoomGItem"))
+                                    {
+                                        if (T.GetComponent<InteractableObject>().Interactable)
+                                        {
+                                            // play animation with the object 
+                                            T.GetComponent<InteractableObject>().Interactable = false;
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+
+                    }
+
                 break;
             }
             case State.Navigation:
@@ -263,10 +402,13 @@ public class NPC : MonoBehaviour {
 
     private int RandomStatePicker()
     {
-        RandomState = Random.Range(0, 2);
+        RandomState = Random.Range(0, 3);
         Debug.Log(RandomState);
         return RandomState;
     }
+
+
+
 
     private void RandomNodePicker()
     {
