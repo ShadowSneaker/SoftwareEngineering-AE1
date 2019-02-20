@@ -424,6 +424,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -13.39
       objectReference: {fileID: 0}
+    - target: {fileID: 1471088456107982, guid: 0bdf7fa6d9289f04e900b3b9b0a64b87, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bdf7fa6d9289f04e900b3b9b0a64b87, type: 2}
   m_IsPrefabParent: 0
@@ -1015,11 +1019,11 @@ MonoBehaviour:
   Node5: {fileID: 1955772542}
   Node6: {fileID: 1078992474}
   Node7: {fileID: 1556473078}
-  AtNode1: 0
-  AtNode2: 0
-  AtHub: 0
+  TheHub: {fileID: 769149871}
   MoveOn: 0
-  WaitTimer: 10
+  AtHub: 0
+  Once: 0
+  WaitTimer: 5
 --- !u!54 &1812986110
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour {
 
     private EntityScript NPCEntity;
     
-
+    
     //nodes for the bottom floor
     public Transform Node1;
     public Transform Node2;
@@ -18,29 +18,27 @@ public class NPC : MonoBehaviour {
     public Transform Node5;
     public Transform Node6;
     public Transform Node7;
+    public Transform TheHub;
 
-    // this should be used to detwemine what node they are at then should have something to determine where to move next
-    public bool AtNode1;
-    public bool AtNode2;
-    public bool AtNode3;
-    public bool AtNode4;
-    public bool AtNode5;
-    public bool AtNode6;
-    public bool AtNode7;
-    public bool AtHub;
-    public bool MoveOn;
-
-    // bools called moveTo to tell the Ai move there
-
+    // the navigation mesh the AI will use
     private NavMeshAgent Navigation;
-
+    // the Number that determines the state of the AI
     private int RandomState;
+   
+    // bools to allow movemnt and notification when the AI is at the Hub
+    public bool MoveOn;
+    public bool AtHub;
+    public bool Once;
 
-    enum State {Idle, Navigation, Interaction, Event };
+    enum State {Idle, Navigation, Interaction, Event }; // enum to tell the Ai what state it is in to determine what it does
+    enum Node {AtNode1, AtNode2, AtNode3, AtNode4, AtNode5, AtNode6, AtNode7, AtHub }; // tell the Ai what part of the room the Ai is in
+    enum Movement {Node1, Node2, Node3, Node4, Node5, Node6, Node7, Hub } // to tell the AI where to go next
 
-    State MyState;
+    State MyState; // AI's state
+    Node CurrentNode; // the Current node the AI is at
+    Movement NextNode; // the next node for the AI to move to
 
-    public float WaitTimer = 5.0f;
+    public float WaitTimer; // timer for the idle wait time
 
 	void Start ()
     {
@@ -50,7 +48,9 @@ public class NPC : MonoBehaviour {
 
         Navigation = FindObjectOfType<NavMeshAgent>();
 
+        CurrentNode = Node.AtHub;
 
+        Once = false;
 	}
 	
 	
@@ -69,6 +69,7 @@ public class NPC : MonoBehaviour {
                 }
                 case (1):
                 {
+                        Once = false;
                         MyState = State.Navigation;
                         MoveOn = false;
                     break;
@@ -91,60 +92,84 @@ public class NPC : MonoBehaviour {
             }
             case State.Navigation:
             {
-               
 
-                    // needs to be changed
-                    if (!AtNode1 && !AtNode2 && !AtNode3 && !AtNode4  && !AtNode5 && !AtNode2)
+                    // decides where to go next
+                    RandomNodePicker();
+
+                    Once = false;
+
+                    //acually moves the Ai to that position
+                    switch(NextNode)
                     {
-                        int Temp = RandomNodePicker();
+                        case Movement.Hub:
+                            {
+                                Debug.Log("Moving to node Hub");
+                                Once = true;
+                               
+                                Navigation.SetDestination(TheHub.position);
 
-                        if (Temp == 0)
-                        {
-                            AtNode1 = true;
-                            AtHub = false;
-                        }
-                        else if(Temp == 1)
-                        {
-                            AtNode2 = true;
-                            AtHub = false;
-                        }
-                        else if(Temp == 2)
-                        {
-                            AtNode3 = true;
-                            AtHub = false;
-                        }
-                        else if (Temp == 3)
-                        {
-                            AtNode4 = true;
-                            AtHub = false;
-                        }
-                        else if (Temp == 4)
-                        {
-                            AtNode5 = true;
-                            AtHub = false;
-                        }
-                        else if (Temp == 5)
-                        {
-                            AtNode6 = true;
-                            AtHub = false;
-                        }
-                        else if (Temp == 6)
-                        {
-                            AtNode7 = true;
-                            AtHub = false;
-                        }
+                                
 
-                    }
+                                break;
+                            }
+                        case Movement.Node1:
+                            {
+                                Debug.Log("Moving to node 1");
+                                Once = true;
 
-                    if (AtNode1)
-                    {
-                        Navigation.destination = Node2.position;
+                                Navigation.SetDestination(Node1.position);
+                                
+                                break;
+                            }
+                        case Movement.Node2:
+                            {
+                                Debug.Log("Moving to node 2");
+                                Once = true;
+                                Navigation.SetDestination(Node2.position);
+                               
+                                break;
+                            }
+                        case Movement.Node3:
+                            {
+                                Debug.Log("Moving to node 3");
+                                Once = true;
+                                Navigation.SetDestination(Node3.position);
+                                
+                                break;
+                            }
+                        case Movement.Node4:
+                            {
+                                Debug.Log("Moving to node 4");
+                                Once = true;
+                                Navigation.SetDestination(Node4.position);
+                                
+                                break;
+                            }
+                        case Movement.Node5:
+                            {
+                                Debug.Log("Moving to node 5");
+                                Once = true;
+                                Navigation.SetDestination(Node5.position);
+                                
+                                break;
+                            }
+                        case Movement.Node6:
+                            {
+                                Debug.Log("Moving to node 6");
+                                Once = true;
+                                Navigation.SetDestination(Node6.position);
+                                
+                                break;
+                            }
+                        case Movement.Node7:
+                            {
+                                Debug.Log("Moving to node 7");
+                                Once = true;
+                                Navigation.SetDestination(Node7.position);
+                                
+                                break;
+                            }
                     }
-                    else if (AtNode2)
-                    {
-                        Navigation.destination = Node1.position;
-                    }
-                    
 
                     break;
             }
@@ -182,95 +207,57 @@ public class NPC : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
       
-
+    
         if(other.name == "Node1")
         {
-            AtHub = false;
-            AtNode1 = true;
-            AtNode2 = false;
-            AtNode3 = false;
-            AtNode4 = false;
-            AtNode5 = false;
-            AtNode6 = false;
-            AtNode7 = false;
+            MyState = State.Idle;
+            CurrentNode = Node.AtNode1;
+            Once = false;
         }
         else if (other.name == "Node2")
         {
-            AtHub = false;
-            AtNode1 = false;
-            AtNode2 = true;
-            AtNode3 = false;
-            AtNode4 = false;
-            AtNode5 = false;
-            AtNode6 = false;
-            AtNode7 = false;
-
+            MyState = State.Idle;
+            CurrentNode = Node.AtNode2;
+            Once = false;
         }
         else if (other.name == "Node3")
         {
-            AtHub = false;
-            AtNode1 = false;
-            AtNode2 = false;
-            AtNode3 = true;
-            AtNode4 = false;
-            AtNode5 = false;
-            AtNode6 = false;
-            AtNode7 = false;
-
+            MyState = State.Idle;
+            CurrentNode = Node.AtNode3;
+            Once = false;
         }
         else if (other.name == "Node4")
         {
-            AtHub = false;
-            AtNode1 = false;
-            AtNode2 = false;
-            AtNode3 = false;
-            AtNode4 = true;
-            AtNode5 = false;
-            AtNode6 = false;
-            AtNode7 = false;
+            MyState = State.Idle;
+            CurrentNode = Node.AtNode4;
+            Once = false;
         }
         else if (other.name == "Node5")
         {
-            AtHub = false;
-            AtNode1 = false;
-            AtNode2 = false;
-            AtNode3 = false;
-            AtNode4 = true;
-            AtNode5 = true;
-            AtNode6 = false;
-            AtNode7 = false;
+            MyState = State.Idle;
+            CurrentNode = Node.AtNode5;
+            Once = false;
         }
-     
         else if (other.name == "Node6")
         {
-            AtHub = false;
-            AtNode1 = false;
-            AtNode2 = false;
-            AtNode3 = false;
-            AtNode4 = false;
-            AtNode5 = false;
-            AtNode6 = true;
-            AtNode7 = false;
+            MyState = State.Idle;
+            CurrentNode = Node.AtNode6;
+            Once = false;
         }
         else if (other.name == "Node7")
         {
-            AtHub = false;
-            AtNode1 = false;
-            AtNode2 = false;
-            AtNode3 = false;
-            AtNode4 = false;
-            AtNode5 = false;
-            AtNode6 = false;
-            AtNode7 = true;
+            MyState = State.Idle;
+            CurrentNode = Node.AtNode7;
+            Once = false;
         }
         else if(other.name == "Hub")
         {
-            AtHub = true;
+           
             MyState = State.Idle;
-
+            CurrentNode = Node.AtHub;
         }
-
-
+    
+    
     }
 
 
@@ -281,11 +268,370 @@ public class NPC : MonoBehaviour {
         return RandomState;
     }
 
-    private int RandomNodePicker()
+    private void RandomNodePicker()
     {
-        //this will increase later gonna find a way so that you can just tyoe a number and it increase the nodes
-        return Random.Range(0, 7);
+        int temp;
+        if (!Once)
+        {
+            switch (CurrentNode)
+            {
+                case Node.AtHub:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node1;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node2;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node3;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node4;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node5;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node6;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Node7;
+                                    break;
+                                }
+
+                        }
+
+                        break;
+                    }
+                case Node.AtNode1:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node2;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node3;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node4;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node5;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node6;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node7;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Hub;
+                                    break;
+                                }
+
+                        }
+
+                        break;
+                    }
+                case Node.AtNode2:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node1;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node3;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node4;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node5;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node6;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node7;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Hub;
+                                    break;
+                                }
+
+                        }
+                        break;
+                    }
+                case Node.AtNode3:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node1;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node2;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node4;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node5;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node6;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node7;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Hub;
+                                    break;
+                                }
+
+                        }
+                        break;
+                    }
+                case Node.AtNode4:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node1;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node2;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node3;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node5;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node6;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node7;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Hub;
+                                    break;
+                                }
+
+                        }
+                        break;
+                    }
+                case Node.AtNode5:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node1;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node2;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node3;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node4;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node6;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node7;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Hub;
+                                    break;
+                                }
+
+                        }
+                        break;
+                    }
+                case Node.AtNode6:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node1;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node2;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node3;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node4;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node5;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node7;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Hub;
+                                    break;
+                                }
+
+                        }
+                        break;
+                    }
+                case Node.AtNode7:
+                    {
+                        temp = Random.Range(0, 7);
+                        switch (temp)
+                        {
+                            case (0):
+                                {
+                                    NextNode = Movement.Node1;
+                                    break;
+                                }
+                            case (1):
+                                {
+                                    NextNode = Movement.Node2;
+                                    break;
+                                }
+                            case (2):
+                                {
+                                    NextNode = Movement.Node3;
+                                    break;
+                                }
+                            case (3):
+                                {
+                                    NextNode = Movement.Node4;
+                                    break;
+                                }
+                            case (4):
+                                {
+                                    NextNode = Movement.Node5;
+                                    break;
+                                }
+                            case (5):
+                                {
+                                    NextNode = Movement.Node6;
+                                    break;
+                                }
+                            case (6):
+                                {
+                                    NextNode = Movement.Hub;
+                                    break;
+                                }
+
+                        }
+                        break;
+                    }
+            }
+
+        }
+
     }
-
-
 }
