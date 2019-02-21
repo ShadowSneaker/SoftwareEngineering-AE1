@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -31,5 +32,17 @@ public class PlayerUI : MonoBehaviour
 
             GameOverAnim.Play(GameOverAnim.clip.name);
         }
+    }
+
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
