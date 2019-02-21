@@ -111,6 +111,7 @@ public class NPC : MonoBehaviour {
                                     {
                                        if(T.GetComponent<InteractableObject>().Interactable)
                                        {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                        }
@@ -127,6 +128,7 @@ public class NPC : MonoBehaviour {
                                     {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
@@ -142,6 +144,7 @@ public class NPC : MonoBehaviour {
                                     {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
@@ -157,6 +160,7 @@ public class NPC : MonoBehaviour {
                                     {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
@@ -172,6 +176,7 @@ public class NPC : MonoBehaviour {
                                     {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
@@ -187,6 +192,7 @@ public class NPC : MonoBehaviour {
                                     {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
@@ -202,6 +208,7 @@ public class NPC : MonoBehaviour {
                                     {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
@@ -217,6 +224,7 @@ public class NPC : MonoBehaviour {
                                     {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
+                                            Navigation.SetDestination(T.position);
                                             // play animation with the object 
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
