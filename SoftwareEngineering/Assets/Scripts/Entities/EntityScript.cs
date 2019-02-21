@@ -131,7 +131,7 @@ public class EntityScript : MonoBehaviour
             {
                 IsDead = true;
                 Info.KilledEntity = true;
-                OnDeath();
+                OnDeath(false);
                 // Play Death Sound
                 Anim.SetBool("Dead", true);
 
@@ -168,20 +168,16 @@ public class EntityScript : MonoBehaviour
             if (Sanity <= 0.0f)
             {
                 IsDead = true;
-                OnDeath();
-
+                OnDeath(true);
+                
                 Anim.SetBool("Insanity", true);
-            }
-            else
-            {
-
             }
         }
     }
 
 
     // Overrideable function, Runs when the player dies/ runs out of sanity.
-    protected virtual void OnDeath()
+    protected virtual void OnDeath(bool IsInsanity)
     {}
 
 
@@ -336,6 +332,16 @@ public class EntityScript : MonoBehaviour
         get
         {
             return Health;
+        }
+    }
+
+
+
+    protected Animator GetAnimation
+    {
+        get
+        {
+            return Anim;
         }
     }
 }

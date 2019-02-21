@@ -30,6 +30,8 @@ public class PlayerUI : MonoBehaviour
             if (!GameOverAnim)
                 GameOverAnim = GameOverImage.GetComponent<Animation>();
 
+            GameOverImage.gameObject.SetActive(true);
+
             GameOverAnim.Play(GameOverAnim.clip.name);
         }
     }

@@ -15,11 +15,12 @@ public class PlayerScript : EntityScript
     // A refernce to the attached CameraController component.
     CameraController Cam;
 
-
     RaycastHit Hit;
     InteractableObject Obj;
 
     PlayerUI UI;
+
+    private bool CamPointToPlayer;
 
 
     // Use this for initialization
@@ -28,6 +29,8 @@ public class PlayerScript : EntityScript
         base.Start();
         Cam = GetComponent<CameraController>();
         UI = FindObjectOfType<PlayerUI>();
+
+        Cursor.visible = false;
 	}
 
 
@@ -35,13 +38,11 @@ public class PlayerScript : EntityScript
     {
         base.FixedUpdate();
 
-        if (Cam)
+        if (Cam && !IsDead)
         {
             Physics.Raycast(Cam.Cam.transform.position, Cam.Cam.transform.forward, out Hit, InteractionRange);
             if (Hit.collider)
             {
-                Debug.Log("Hit");
-
                 // Interact with objects that trigger on looking.
                 Obj = Hit.transform.GetComponent<LookInteractor>();
                 if (Obj && Obj.Interactable)
@@ -78,16 +79,31 @@ public class PlayerScript : EntityScript
                 ObjectInfo.enabled = false;
             }
         }
+
+        if (IsDead && CamPointToPlayer)
+        {
+            Cam.transform.rotation = Quaternion.RotateTowards(Cam.transform.rotation, transform.rotation, Time.deltaTime);
+        }
     }
 
 
-    protected override void OnDeath()
+    protected override void OnDeath(bool IsInsanity)
     {
-        Debug.Log("Ran");
         if (UI)
         {
-            Debug.Log("Ran2");
             UI.DisplayGameOver();
+        }
+
+        Cam.enabled = false;
+
+        if (IsInsanity)
+        {
+            GetAnimation.SetBool("Insanity", true);
+        }
+        else
+        {
+            GetAnimation.enabled = false;
+            CamPointToPlayer = true;
         }
     }
 }
