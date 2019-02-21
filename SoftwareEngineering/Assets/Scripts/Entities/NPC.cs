@@ -38,6 +38,7 @@ public class NPC : MonoBehaviour {
     enum Node {AtNode1, AtNode2, AtNode3, AtNode4, AtNode5, AtNode6, AtNode7, AtHub }; // tell the Ai what part of the room the Ai is in
     enum Movement {Node1, Node2, Node3, Node4, Node5, Node6, Node7, Hub } // to tell the AI where to go next
 
+    private Animator NPCAnim;
 
 
     State MyState; // AI's state
@@ -57,6 +58,9 @@ public class NPC : MonoBehaviour {
         CurrentNode = Node.AtHub;
 
         Once = false;
+
+        NPCAnim = transform.GetComponent<Animator>();
+
 	}
 	
 	
@@ -112,7 +116,7 @@ public class NPC : MonoBehaviour {
                                        if(T.GetComponent<InteractableObject>().Interactable)
                                        {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                        }
                                     }
@@ -129,7 +133,7 @@ public class NPC : MonoBehaviour {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -145,7 +149,7 @@ public class NPC : MonoBehaviour {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -161,7 +165,7 @@ public class NPC : MonoBehaviour {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -177,7 +181,7 @@ public class NPC : MonoBehaviour {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -193,7 +197,7 @@ public class NPC : MonoBehaviour {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -209,7 +213,7 @@ public class NPC : MonoBehaviour {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -225,7 +229,7 @@ public class NPC : MonoBehaviour {
                                         if (T.GetComponent<InteractableObject>().Interactable)
                                         {
                                             Navigation.SetDestination(T.position);
-                                            // play animation with the object 
+                                            NPCAnim.SetBool("InteractItem", true);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -347,9 +351,15 @@ public class NPC : MonoBehaviour {
     }
 
 
+    public void InteractionStop()
+    {
+        NPCAnim.SetBool("InteractItem", false);
+    }
 
+    public void InteractionStart()
+    {
 
-
+    }
 
     private void OnTriggerEnter(Collider other)
     {
