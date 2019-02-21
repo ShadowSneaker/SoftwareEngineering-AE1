@@ -230,8 +230,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: IneractionStart
+      - time: 0.92113566
+        functionName: InteractionStop
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 9111e0cd50ebbc744ba0d956314bd3a1,
           type: 3}

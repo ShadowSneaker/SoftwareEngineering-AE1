@@ -117,6 +117,7 @@ public class NPC : MonoBehaviour {
                                        {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                        }
                                     }
@@ -134,6 +135,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -150,6 +152,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -166,6 +169,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -182,6 +186,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -198,6 +203,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -214,6 +220,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -230,6 +237,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             Navigation.SetDestination(T.position);
                                             NPCAnim.SetBool("InteractItem", true);
+                                            T.transform.SetParent(transform);
                                             T.GetComponent<InteractableObject>().Interactable = false;
                                         }
                                     }
@@ -353,13 +361,9 @@ public class NPC : MonoBehaviour {
 
     public void InteractionStop()
     {
-        NPCAnim.SetBool("InteractItem", false);
+        transform.DetachChildren();
     }
 
-    public void InteractionStart()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
