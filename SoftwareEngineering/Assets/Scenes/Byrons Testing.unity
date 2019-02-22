@@ -3496,7 +3496,7 @@ Prefab:
     - target: {fileID: 9500000, guid: 853fbba28105ad947a3dab7280f247a6, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: 93a9af00ee21c074daf6a9927ab32189, type: 2}
     - target: {fileID: 400116, guid: 853fbba28105ad947a3dab7280f247a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 20.646515
@@ -4313,7 +4313,7 @@ Animator:
   m_GameObject: {fileID: 1812986102}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2a35a4482cd661e49959663653316f17, type: 3}
-  m_Controller: {fileID: 22100000, guid: 17140bf8ce1ef94458b06db8e3e36588, type: 2}
+  m_Controller: {fileID: 9100000, guid: 93a9af00ee21c074daf6a9927ab32189, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -34,6 +34,8 @@ public class NPC : MonoBehaviour {
     public bool AtHub;
     public bool Once;
 
+    public bool Interacting; // used for when the NPC is interacting with an object
+
     enum State {Idle, Navigation, Interaction, Event }; // enum to tell the Ai what state it is in to determine what it does
     enum Node {AtNode1, AtNode2, AtNode3, AtNode4, AtNode5, AtNode6, AtNode7, AtHub }; // tell the Ai what part of the room the Ai is in
     enum Movement {Node1, Node2, Node3, Node4, Node5, Node6, Node7, Hub } // to tell the AI where to go next
