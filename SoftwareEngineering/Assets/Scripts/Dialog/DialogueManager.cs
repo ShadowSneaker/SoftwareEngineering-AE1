@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     private float Timer = 1;
 
     private bool beginingDialog;
-
+    private bool EndDialog;
    
 
 
@@ -39,21 +39,28 @@ public class DialogueManager : MonoBehaviour
 
      void Update()
      {
-        if (!beginingDialog)
+        if (!EndDialog)
         {
-            if (CR_Running)
+            if (!beginingDialog)
             {
-               
-            }
-            else
-            {
-                if (Sentences.Count == 0)
+                if (CR_Running)
                 {
-                    StartCoroutine(TypeWriter(NPCDialogue.FinalLine));
+
                 }
                 else
                 {
-                    StartCoroutine(TypeWriter(Sentences.Dequeue()));
+                    if (Sentences.Count == 0)
+                    {
+                        StartCoroutine(TypeWriter(NPCDialogue.FinalLine));
+                       
+                        EndDialog = true;
+                        CharecterText.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        StartCoroutine(TypeWriter(Sentences.Dequeue()));
+                        
+                    }
                 }
             }
         }
@@ -74,7 +81,7 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(TypeWriter(NPCDialogue.StartLine));
         }
 
-        
+        EndDialog = false;
         
     }
 
@@ -89,7 +96,8 @@ public class DialogueManager : MonoBehaviour
         foreach(char letter in line.ToCharArray())
         {
             CharecterText.text += letter;
-            yield return null;
+            
+            yield return new WaitForSeconds(0.2f);
         }
 
         CR_Running = false;
@@ -99,4 +107,7 @@ public class DialogueManager : MonoBehaviour
             beginingDialog = false;
         }
     }
+
+  
+
 }
