@@ -24,7 +24,7 @@ public class InteractableObject : MonoBehaviour
 
     // Interacts with this object.
     // @param Interactor - The entity who interacted with this object.
-    public void Interact(EntityScript Interactor)
+    public virtual void Interact(EntityScript Interactor)
     {
         if (Interactable)
         {

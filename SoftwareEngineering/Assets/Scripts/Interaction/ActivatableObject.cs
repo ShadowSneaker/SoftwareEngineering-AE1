@@ -29,7 +29,7 @@ public class ActivatableObject : MonoBehaviour
 
 
 
-    public void Activate()
+    public virtual void Activate()
     {
         switch (Behaviour)
         {
