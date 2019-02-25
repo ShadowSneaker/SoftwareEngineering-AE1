@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4137913354369424}
   - component: {fileID: 33923819606675154}
   - component: {fileID: 23590789087357968}
-  - component: {fileID: 64142478414144850}
+  - component: {fileID: 65537293594693852}
   m_Layer: 0
   m_Name: dfk_wardrobe_01
   m_TagString: Untagged
@@ -137,8 +137,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962677989927716}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.6830127, y: 0.18301274, z: 0.18301274, w: 0.6830127}
+  m_LocalPosition: {x: -8.986, y: 0.362, z: -11.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4450624845743470}
@@ -147,7 +147,7 @@ Transform:
   - {fileID: 4167183367052818}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 30, z: 0}
 --- !u!4 &4153928968129256
 Transform:
   m_ObjectHideFlags: 1
@@ -438,20 +438,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962677989927716}
   m_Mesh: {fileID: 4300000, guid: 21ef6551c3751344e80409de0a727bbc, type: 3}
---- !u!64 &64142478414144850
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1962677989927716}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 21ef6551c3751344e80409de0a727bbc, type: 3}
 --- !u!64 &64231187810665544
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -492,6 +478,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.49631053, y: 1.4747835, z: 0.028785199}
   m_Center: {x: -0.24427637, y: 0.14915693, z: -0.0011045784}
+--- !u!65 &65537293594693852
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962677989927716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1018932, y: 1.9711897, z: 0.5537672}
+  m_Center: {x: 0.000000058820344, y: 0.98684186, z: -0.000000015760872}
 --- !u!65 &65585224625052552
 BoxCollider:
   m_ObjectHideFlags: 1

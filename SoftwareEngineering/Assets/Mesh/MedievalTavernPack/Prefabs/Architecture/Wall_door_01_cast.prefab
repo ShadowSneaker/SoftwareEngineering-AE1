@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactable: 1
   BoundObjects:
-  - {fileID: 0}
+  - {fileID: 114404699859611002}
   DeactivateOnInteraction: 0
   FlavourText: Press F to open
   ObjectInfo: 

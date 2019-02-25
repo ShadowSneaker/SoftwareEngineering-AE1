@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4681472241124192}
   - component: {fileID: 33936407886326888}
   - component: {fileID: 23862599732557722}
-  - component: {fileID: 64874461008478210}
+  - component: {fileID: 65903784580823804}
   m_Layer: 0
   m_Name: dfk_candleholder_04
   m_TagString: Untagged
@@ -220,8 +220,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926006508109636}
-  m_LocalRotation: {x: -0.00000008146034, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.041999817, y: 0, z: -0.4130001}
+  m_LocalRotation: {x: -0, y: -0.15475115, z: -0, w: 0.9879535}
+  m_LocalPosition: {x: 1.9087505, y: 0.1, z: -6.8011045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4231538343824480}
@@ -426,8 +426,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926006508109636}
   m_Mesh: {fileID: 4300004, guid: 9dd0333f658a04945838506549b90115, type: 3}
---- !u!64 &64874461008478210
-MeshCollider:
+--- !u!65 &65903784580823804
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -435,11 +435,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300004, guid: 9dd0333f658a04945838506549b90115, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.55067813, y: 1.4835385, z: 0.3078466}
+  m_Center: {x: 0.0009342283, y: 0.74176925, z: -0.048266627}
 --- !u!108 &108756576893960512
 Light:
   m_ObjectHideFlags: 1
