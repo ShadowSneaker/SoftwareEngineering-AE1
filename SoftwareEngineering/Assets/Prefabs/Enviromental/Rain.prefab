@@ -59,7 +59,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4283318392621240
 Transform:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081898449913714}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.86, y: 39.43, z: -0}
+  m_LocalPosition: {x: 0.85999966, y: 31.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4318421342254590}
@@ -80,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277200345157426}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.5, y: 1, z: 31}
+  m_LocalPosition: {x: -8.037, y: -11.989, z: -19.395985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283318392621240}
@@ -94,26 +94,26 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1670590975521874}
-  m_LocalRotation: {x: 0, y: 0.92387956, z: -0.38268343, w: 0}
-  m_LocalPosition: {x: 9.82, y: 42.44, z: 35.27}
+  m_LocalRotation: {x: 0.19288693, y: 0.24719602, z: -0.050283536, w: 0.94824064}
+  m_LocalPosition: {x: -19.285, y: 27.456, z: -25.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4318421342254590}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 22.996, y: 29.222002, z: 0}
 --- !u!108 &108141018622835114
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1670590975521874}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 5
-  m_Range: 100
-  m_SpotAngle: 30
+  m_Range: 405.57184
+  m_SpotAngle: 94.13791
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -150,6 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lightning: {fileID: 1670590975521874}
   lightningTime: {x: 5, y: 20}
+  Timer: 0
+  LightningFade: 0
+  LightningSecondFade: 0
+  countdown: 0
 --- !u!198 &198312314963514474
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3548,9 +3552,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3671,7 +3675,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4718,7 +4722,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 3
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
