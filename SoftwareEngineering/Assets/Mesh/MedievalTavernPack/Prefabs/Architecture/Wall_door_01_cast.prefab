@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 33820628063370296}
   - component: {fileID: 23670751005162578}
   - component: {fileID: 111615070879548040}
-  - component: {fileID: 95276057527399804}
   - component: {fileID: 64507429957168724}
   - component: {fileID: 114947255864257268}
   - component: {fileID: 114404699859611002}
@@ -60,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702915204394996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 22.345001}
+  m_LocalPosition: {x: -7, y: 0, z: -0.100001335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4415312757548726}
@@ -285,24 +284,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &95276057527399804
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1702915204394996}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ab2bb0f2df700694f8228696f3570ef1, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!111 &111615070879548040
 Animation:
   m_ObjectHideFlags: 1
