@@ -73,4 +73,10 @@ public class DoorScript : ActivatableObject
             }
         }
     }
+
+
+    public void SetLock(bool Lock)
+    {
+        Locked = Lock;
+    }
 }

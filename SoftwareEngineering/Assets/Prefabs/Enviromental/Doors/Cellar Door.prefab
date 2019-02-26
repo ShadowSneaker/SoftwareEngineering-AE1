@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 111424234651131422}
   - component: {fileID: 114241409209267320}
   - component: {fileID: 114789786830452230}
+  - component: {fileID: 114541277267170810}
   - component: {fileID: 82167203906389566}
   m_Layer: 0
   m_Name: Cellar Door
@@ -226,6 +227,17 @@ MonoBehaviour:
   DeactivateOnInteraction: 0
   FlavourText: Press F to open
   ObjectInfo: 
+--- !u!114 &114541277267170810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060480413028930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73be2427d318a4c40b5ecd98c08e91a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114789786830452230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,7 +251,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Behaviour: 0
   Activated: 0
-  Events: []
+  Events:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114541277267170810}
+        m_MethodName: PlayAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   DoorOpenSound: {fileID: 0}
   DoorCloseSound: {fileID: 0}
   LockedSound: {fileID: 0}
