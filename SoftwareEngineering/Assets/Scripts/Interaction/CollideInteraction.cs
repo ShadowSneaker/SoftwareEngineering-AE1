@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CollideInteraction : ActivatableObject
 {
-
     private void OnCollisionEnter(Collision collision)
     {
-        Activate();
+        //Activate();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Activate();
+        }
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        Activate();
+        if (other.CompareTag("Player"))
+        {
+            Activate();
+        }
     }
 }
