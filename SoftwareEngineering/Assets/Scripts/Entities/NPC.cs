@@ -7,7 +7,7 @@ public class NPC : MonoBehaviour {
 
 
 
-    private EntityScript NPCEntity;
+    //private EntityScript NPCEntity;
 
 
     //nodes for the bottom floor
@@ -49,11 +49,19 @@ public class NPC : MonoBehaviour {
 
     public float WaitTimer; // timer for the idle wait time
 
+    //bools for changing differnt types of interaction
+    public bool interactPlayer;
+    public bool interactObject;
+
+    //bool for the event
+    public bool EventTriggered;
+
+
 	void Start ()
     {
         MoveOn = false;
 
-        NPCEntity = gameObject.GetComponent<EntityScript>();
+        //NPCEntity = gameObject.GetComponent<EntityScript>();
 
         Navigation = FindObjectOfType<NavMeshAgent>();
 
@@ -63,35 +71,47 @@ public class NPC : MonoBehaviour {
 
         NPCAnim = transform.GetComponent<Animator>();
 
+        interactPlayer = false;
+        interactObject = false;
+
+
+        // at the start the NPC is forced into the event and thats the only time the state is entered
+        MyState = State.Event;
 	}
 	
 	
 	void Update ()
     {
-        if(AtHub || MoveOn)
+        if (MyState != State.Event)
         {
-            switch(RandomStatePicker())
+            if (AtHub || MoveOn)
             {
-                case (0):
+                switch (RandomStatePicker())
                 {
-                        MyState = State.Idle;
-                        MoveOn = false;
-                   break;
-                        
+                    case (0):
+                        {
+                            MyState = State.Idle;
+
+                            MoveOn = false;
+                            break;
+
+                        }
+                    case (1):
+                        {
+                            Once = false;
+                            MyState = State.Navigation;
+                            MoveOn = false;
+                            break;
+                        }
+                    case (2):
+                        {
+                            MyState = State.Interaction;
+                            interactObject = true;
+
+                            break;
+                        }
+
                 }
-                case (1):
-                {
-                        Once = false;
-                        MyState = State.Navigation;
-                        MoveOn = false;
-                    break;
-                }
-                case (2):
-                {
-                        MyState = State.Interaction;
-                        break;
-                }
-                
             }
         }
 
@@ -100,243 +120,278 @@ public class NPC : MonoBehaviour {
         {
             case State.Idle:
             {
-                break;
+                    NPCInteractable();
+                    break;
             }
             case State.Interaction:
             {
+                    NPCInteractable();
+                    if (interactObject && !interactPlayer)
+                    {
+                        Debug.Log("sucessfully entered interaction");
 
-                switch(CurrentNode)
-                {
-                        case Node.AtHub:
+                        switch (CurrentNode)
                         {
-                                
+                            case Node.AtHub:
+                                {
 
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if(T.gameObject.CompareTag("RoomHubItem"))
+
+                                    foreach (Transform T in Itemnodes)
                                     {
-                                       if(T.GetComponent<InteractableObject>().Interactable)
-                                       {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                       }
+                                        if (T.gameObject.CompareTag("RoomHubItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Navigation.SetDestination(T.position);
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                              
+                                            }
+                                        }
+                                        else
+                                        {
+                                            interactObject = false;
+                                        }
                                     }
+
+                                    break;
+                                }
+                            case Node.AtNode1:
+                                {
+                                    foreach (Transform T in Itemnodes)
+                                    {
+                                        if (T.gameObject.CompareTag("RoomAItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Debug.Log("In the Final if");
+                                                Navigation.SetDestination(T.position);
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                              
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            case Node.AtNode2:
+                                {
+                                    foreach (Transform T in Itemnodes)
+                                    {
+                                        if (T.gameObject.CompareTag("RoomBItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Debug.Log("In the Final if");
+                                                Navigation.SetDestination(T.position);
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                           
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            case Node.AtNode3:
+                                {
+                                    foreach (Transform T in Itemnodes)
+                                    {
+                                        if (T.gameObject.CompareTag("RoomCItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Debug.Log("In the Final if");
+                                                Navigation.SetDestination(T.position);
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                              
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            case Node.AtNode4:
+                                {
+                                    foreach (Transform T in Itemnodes)
+                                    {
+                                        if (T.gameObject.CompareTag("RoomDItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Debug.Log("In the Final if");
+                                                Navigation.SetDestination(T.position);
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                               
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            case Node.AtNode5:
+                                {
+                                    foreach (Transform T in Itemnodes)
+                                    {
+                                        if (T.gameObject.CompareTag("RoomEItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Debug.Log("In the Final if");
+                                                Navigation.SetDestination(T.position);
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                               
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            case Node.AtNode6:
+                                {
+                                    foreach (Transform T in Itemnodes)
+                                    {
+                                        if (T.gameObject.CompareTag("RoomFItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Debug.Log("In the Final if");
+                                                Navigation.SetDestination(T.position);
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                               
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            case Node.AtNode7:
+                                {
+                                    foreach (Transform T in Itemnodes)
+                                    {
+                                        if (T.gameObject.CompareTag("RoomGItem"))
+                                        {
+                                            if (T.GetComponent<InteractableObject>().Interactable)
+                                            {
+                                                Debug.Log("In the Final if");
+                                                Navigation.SetDestination(T.position);
+
+                                                NPCAnim.SetBool("InteractItem", true);
+                                                T.transform.SetParent(transform);
+                                                T.GetComponent<InteractableObject>().Interactable = false;
+                                                
+                                            }
+                                        }
+                                    }
+                                    break;
                                 }
 
-                            break;
                         }
-                        case Node.AtNode1:
-                        {
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if (T.gameObject.CompareTag("RoomAItem"))
-                                    {
-                                        if (T.GetComponent<InteractableObject>().Interactable)
-                                        {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                        case Node.AtNode2:
-                        {
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if (T.gameObject.CompareTag("RoomBItem"))
-                                    {
-                                        if (T.GetComponent<InteractableObject>().Interactable)
-                                        {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                        case Node.AtNode3:
-                        {
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if (T.gameObject.CompareTag("RoomCItem"))
-                                    {
-                                        if (T.GetComponent<InteractableObject>().Interactable)
-                                        {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                        case Node.AtNode4:
-                        {
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if (T.gameObject.CompareTag("RoomDItem"))
-                                    {
-                                        if (T.GetComponent<InteractableObject>().Interactable)
-                                        {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                        case Node.AtNode5:
-                        {
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if (T.gameObject.CompareTag("RoomEItem"))
-                                    {
-                                        if (T.GetComponent<InteractableObject>().Interactable)
-                                        {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                        case Node.AtNode6:
-                        {
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if (T.gameObject.CompareTag("RoomFItem"))
-                                    {
-                                        if (T.GetComponent<InteractableObject>().Interactable)
-                                        {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-                        case Node.AtNode7:
-                        {
-                                foreach (Transform T in Itemnodes)
-                                {
-                                    if (T.gameObject.CompareTag("RoomGItem"))
-                                    {
-                                        if (T.GetComponent<InteractableObject>().Interactable)
-                                        {
-                                            Navigation.SetDestination(T.position);
-                                            NPCAnim.SetBool("InteractItem", true);
-                                            T.transform.SetParent(transform);
-                                            T.GetComponent<InteractableObject>().Interactable = false;
-                                        }
-                                    }
-                                }
-                                break;
-                        }
-
                     }
-
                 break;
             }
             case State.Navigation:
             {
+                    GetComponent<InteractableObject>().Interactable = false;
 
-                    // decides where to go next
-                    RandomNodePicker();
-
-                    Once = false;
-
-                    //acually moves the Ai to that position
-                    switch(NextNode)
+                    if (!interactPlayer && !interactObject)
                     {
-                        case Movement.Hub:
-                            {
-                                Debug.Log("Moving to node Hub");
-                                Once = true;
-                               
-                                Navigation.SetDestination(TheHub.position);
 
-                                
+                        GetComponent<InteractableObject>().Interactable = false;
+                        // decides where to go next
+                        RandomNodePicker();
 
-                                break;
-                            }
-                        case Movement.Node1:
-                            {
-                                Debug.Log("Moving to node 1");
-                                Once = true;
+                        Once = false;
 
-                                Navigation.SetDestination(Node1.position);
-                                
-                                break;
-                            }
-                        case Movement.Node2:
-                            {
-                                Debug.Log("Moving to node 2");
-                                Once = true;
-                                Navigation.SetDestination(Node2.position);
-                               
-                                break;
-                            }
-                        case Movement.Node3:
-                            {
-                                Debug.Log("Moving to node 3");
-                                Once = true;
-                                Navigation.SetDestination(Node3.position);
-                                
-                                break;
-                            }
-                        case Movement.Node4:
-                            {
-                                Debug.Log("Moving to node 4");
-                                Once = true;
-                                Navigation.SetDestination(Node4.position);
-                                
-                                break;
-                            }
-                        case Movement.Node5:
-                            {
-                                Debug.Log("Moving to node 5");
-                                Once = true;
-                                Navigation.SetDestination(Node5.position);
-                                
-                                break;
-                            }
-                        case Movement.Node6:
-                            {
-                                Debug.Log("Moving to node 6");
-                                Once = true;
-                                Navigation.SetDestination(Node6.position);
-                                
-                                break;
-                            }
-                        case Movement.Node7:
-                            {
-                                Debug.Log("Moving to node 7");
-                                Once = true;
-                                Navigation.SetDestination(Node7.position);
-                                
-                                break;
-                            }
+                        //acually moves the Ai to that position
+                        switch (NextNode)
+                        {
+                            case Movement.Hub:
+                                {
+                                    Debug.Log("Moving to node Hub");
+                                    Once = true;
+
+                                    Navigation.SetDestination(TheHub.position);
+
+
+
+                                    break;
+                                }
+                            case Movement.Node1:
+                                {
+                                    Debug.Log("Moving to node 1");
+                                    Once = true;
+
+                                    Navigation.SetDestination(Node1.position);
+
+                                    break;
+                                }
+                            case Movement.Node2:
+                                {
+                                    Debug.Log("Moving to node 2");
+                                    Once = true;
+                                    Navigation.SetDestination(Node2.position);
+
+                                    break;
+                                }
+                            case Movement.Node3:
+                                {
+                                    Debug.Log("Moving to node 3");
+                                    Once = true;
+                                    Navigation.SetDestination(Node3.position);
+
+                                    break;
+                                }
+                            case Movement.Node4:
+                                {
+                                    Debug.Log("Moving to node 4");
+                                    Once = true;
+                                    Navigation.SetDestination(Node4.position);
+
+                                    break;
+                                }
+                            case Movement.Node5:
+                                {
+                                    Debug.Log("Moving to node 5");
+                                    Once = true;
+                                    Navigation.SetDestination(Node5.position);
+
+                                    break;
+                                }
+                            case Movement.Node6:
+                                {
+                                    Debug.Log("Moving to node 6");
+                                    Once = true;
+                                    Navigation.SetDestination(Node6.position);
+
+                                    break;
+                                }
+                            case Movement.Node7:
+                                {
+                                    Debug.Log("Moving to node 7");
+                                    Once = true;
+                                    Navigation.SetDestination(Node7.position);
+
+                                    break;
+                                }
+                        }
                     }
-
                     break;
             }
             case State.Event:
             {
-                    
+                    // the NPC should be forced into the EVent state at the begining.
+                    if(EventTriggered)
+                    {
+
+                    }
+
                     break;
             }
         }
@@ -360,9 +415,16 @@ public class NPC : MonoBehaviour {
         }
     }
 
+    //function that sets the NPCs interaction to true
+    public void NPCInteractable()
+    {
+        GetComponent<InteractableObject>().Interactable = true;
+    }
 
     public void InteractionStop()
     {
+        Debug.Log("The interaction Has stopped");
+        interactObject = false;
         transform.DetachChildren();
     }
 
@@ -423,6 +485,8 @@ public class NPC : MonoBehaviour {
     
     }
 
+
+    
 
     private int RandomStatePicker()
     {

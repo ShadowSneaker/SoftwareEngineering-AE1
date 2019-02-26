@@ -22,10 +22,12 @@ public class DialogueManager : MonoBehaviour
     private bool CR_Running;
 
     //timer
-    private float Timer = 1;
+    //private float Timer = 1;
 
-    private bool beginingDialog;
-    private bool EndDialog;
+    //
+    public bool beginingDialog;
+    // finsih the dialog
+    public bool EndDialog;
    
 
 
@@ -51,10 +53,11 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (Sentences.Count == 0)
                     {
+                        Debug.Log("Entering last line ");
                         StartCoroutine(TypeWriter(NPCDialogue.FinalLine));
                        
                         EndDialog = true;
-                        CharecterText.gameObject.SetActive(false);
+                        //CharecterText.gameObject.SetActive(false);
                     }
                     else
                     {
@@ -69,7 +72,9 @@ public class DialogueManager : MonoBehaviour
 
     public void Dialog()
     {
-        if(beginingDialog)
+        beginingDialog = true;
+        gameObject.GetComponent<NPC>().interactPlayer = true;
+        if (beginingDialog)
         {
             CharecterText.gameObject.SetActive(true);
 
@@ -105,6 +110,13 @@ public class DialogueManager : MonoBehaviour
         if (beginingDialog)
         {
             beginingDialog = false;
+        }
+
+
+        if(EndDialog)
+        {
+            CharecterText.gameObject.SetActive(false);
+            gameObject.GetComponent<NPC>().interactPlayer = false;
         }
     }
 
