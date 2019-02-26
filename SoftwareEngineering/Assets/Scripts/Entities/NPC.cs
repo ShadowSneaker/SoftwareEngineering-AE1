@@ -22,7 +22,10 @@ public class NPC : MonoBehaviour {
 
 
     public Transform[] Itemnodes;
-    
+
+    // event nodes will be the ones the Ai will travel to
+    [Header("you will need at least one node that is called End point and make sure the evnt node is the last node in the array")]
+    public Transform Travelpoint;
 
     // the navigation mesh the AI will use
     private NavMeshAgent Navigation;
@@ -77,6 +80,8 @@ public class NPC : MonoBehaviour {
 
         // at the start the NPC is forced into the event and thats the only time the state is entered
         MyState = State.Event;
+
+       
 	}
 	
 	
@@ -389,7 +394,7 @@ public class NPC : MonoBehaviour {
                     // the NPC should be forced into the EVent state at the begining.
                     if(EventTriggered)
                     {
-
+                        Navigation.SetDestination(Travelpoint.position);
                     }
 
                     break;
@@ -431,57 +436,63 @@ public class NPC : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-      
-    
-        if(other.name == "Node1")
+
+        if (MyState != State.Event)
         {
-            MyState = State.Idle;
-            CurrentNode = Node.AtNode1;
-            Once = false;
+            if (other.name == "Node1")
+            {
+                MyState = State.Idle;
+                CurrentNode = Node.AtNode1;
+                Once = false;
+            }
+            else if (other.name == "Node2")
+            {
+                MyState = State.Idle;
+                CurrentNode = Node.AtNode2;
+                Once = false;
+            }
+            else if (other.name == "Node3")
+            {
+                MyState = State.Idle;
+                CurrentNode = Node.AtNode3;
+                Once = false;
+            }
+            else if (other.name == "Node4")
+            {
+                MyState = State.Idle;
+                CurrentNode = Node.AtNode4;
+                Once = false;
+            }
+            else if (other.name == "Node5")
+            {
+                MyState = State.Idle;
+                CurrentNode = Node.AtNode5;
+                Once = false;
+            }
+            else if (other.name == "Node6")
+            {
+                MyState = State.Idle;
+                CurrentNode = Node.AtNode6;
+                Once = false;
+            }
+            else if (other.name == "Node7")
+            {
+                MyState = State.Idle;
+                CurrentNode = Node.AtNode7;
+                Once = false;
+            }
+            else if (other.name == "Hub")
+            {
+
+                MyState = State.Idle;
+                CurrentNode = Node.AtHub;
+            }
+            else if (other.name == "EndPoint")
+            {
+                MyState = State.Idle;
+                EventTriggered = false;
+            }
         }
-        else if (other.name == "Node2")
-        {
-            MyState = State.Idle;
-            CurrentNode = Node.AtNode2;
-            Once = false;
-        }
-        else if (other.name == "Node3")
-        {
-            MyState = State.Idle;
-            CurrentNode = Node.AtNode3;
-            Once = false;
-        }
-        else if (other.name == "Node4")
-        {
-            MyState = State.Idle;
-            CurrentNode = Node.AtNode4;
-            Once = false;
-        }
-        else if (other.name == "Node5")
-        {
-            MyState = State.Idle;
-            CurrentNode = Node.AtNode5;
-            Once = false;
-        }
-        else if (other.name == "Node6")
-        {
-            MyState = State.Idle;
-            CurrentNode = Node.AtNode6;
-            Once = false;
-        }
-        else if (other.name == "Node7")
-        {
-            MyState = State.Idle;
-            CurrentNode = Node.AtNode7;
-            Once = false;
-        }
-        else if(other.name == "Hub")
-        {
-           
-            MyState = State.Idle;
-            CurrentNode = Node.AtHub;
-        }
-    
     
     }
 
