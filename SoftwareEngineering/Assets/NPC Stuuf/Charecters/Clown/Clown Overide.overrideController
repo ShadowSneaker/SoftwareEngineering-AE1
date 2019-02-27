@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Clown Overide
+  m_Controller: {fileID: 9100000, guid: 93a9af00ee21c074daf6a9927ab32189, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2a35a4482cd661e49959663653316f17, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 19b528903a8587143b99dee0d45a7128, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 3eabd5944de14bc488fd5c778511ac97, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: d25537efe05a76848bcf210d77a03a96, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 853fbba28105ad947a3dab7280f247a6, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 1b2719e3d55951e409a6a5e863b1add4, type: 3}

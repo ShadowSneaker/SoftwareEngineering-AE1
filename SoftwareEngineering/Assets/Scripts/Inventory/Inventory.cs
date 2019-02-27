@@ -17,41 +17,42 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
 
-    // uncomment once items have been done
-    // public List<ItemScript> Items = new List<ItemScript>();
+    
+    public List<ItemScript> Items = new List<ItemScript>();
     public int space;
     public delegate void OnItemChanged();
     public OnItemChanged OnItemChangedCallBack;
 
 
-    // uncomment once items have been done
-    //  public bool AddItems (ItemScript item)
-    //  {
-    //      if(AddItems.Count >= space)
-    //      {
-    //          Debug.Log("No Room My good friend");
-    //          return false
-    //      }
-    //  
-    //      AddItems.Add(item);
-    //  
-    //  
-    //      if(OnItemChangedCallBack != null)
-    //      {
-    //          OnItemChangedCallBack.Invoke();
-    //      }
-    //  
-    //  }
-    //  
-    //  public void RemoveItems(ItemScipt item)
-    //  {
-    //      AddItems.Remove(item);
-    //  
-    //      if (OnItemChangedCallBack != null)
-    //      {
-    //          OnItemChangedCallBack.Invoke();
-    //      }
-    //  }
+   
+
+      public bool AddItems (ItemScript item)
+      {
+          if(Items.Count >= space)
+          {
+              Debug.Log("No Room My good friend");
+            return false;
+          }
+      
+          Items.Add(item);
+      
+      
+          if(OnItemChangedCallBack != null)
+          {
+              OnItemChangedCallBack.Invoke();
+          }
+        return true;
+      }
+      
+      public void RemoveItems(ItemScript item)
+      {
+          Items.Remove(item);
+      
+          if (OnItemChangedCallBack != null)
+          {
+              OnItemChangedCallBack.Invoke();
+          }
+      }
 
 
 

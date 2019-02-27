@@ -24,7 +24,7 @@ public class NPC : MonoBehaviour {
     public Transform[] Itemnodes;
 
     // event nodes will be the ones the Ai will travel to
-    [Header("you will need at least one node that is called End point and make sure the evnt node is the last node in the array")]
+    [Header("you will need at least one node that is called End point and make sure the event node is the last node in the array")]
     public Transform Travelpoint;
 
     // the navigation mesh the AI will use
@@ -147,7 +147,7 @@ public class NPC : MonoBehaviour {
                                         {
                                             if (T.GetComponent<InteractableObject>().Interactable)
                                             {
-                                                Navigation.SetDestination(T.position);
+                                               Navigation.SetDestination(T.position);
                                                 NPCAnim.SetBool("InteractItem", true);
                                                 T.transform.SetParent(transform);
                                                 T.GetComponent<InteractableObject>().Interactable = false;
@@ -171,7 +171,7 @@ public class NPC : MonoBehaviour {
                                             if (T.GetComponent<InteractableObject>().Interactable)
                                             {
                                                 Debug.Log("In the Final if");
-                                                Navigation.SetDestination(T.position);
+                                               Navigation.SetDestination(T.position);
                                                 NPCAnim.SetBool("InteractItem", true);
                                                 T.transform.SetParent(transform);
                                                 T.GetComponent<InteractableObject>().Interactable = false;
@@ -190,7 +190,7 @@ public class NPC : MonoBehaviour {
                                             if (T.GetComponent<InteractableObject>().Interactable)
                                             {
                                                 Debug.Log("In the Final if");
-                                                Navigation.SetDestination(T.position);
+                                               Navigation.SetDestination(T.position);
                                                 NPCAnim.SetBool("InteractItem", true);
                                                 T.transform.SetParent(transform);
                                                 T.GetComponent<InteractableObject>().Interactable = false;
@@ -228,7 +228,7 @@ public class NPC : MonoBehaviour {
                                             if (T.GetComponent<InteractableObject>().Interactable)
                                             {
                                                 Debug.Log("In the Final if");
-                                                Navigation.SetDestination(T.position);
+                                               Navigation.SetDestination(T.position);
                                                 NPCAnim.SetBool("InteractItem", true);
                                                 T.transform.SetParent(transform);
                                                 T.GetComponent<InteractableObject>().Interactable = false;
@@ -285,7 +285,7 @@ public class NPC : MonoBehaviour {
                                             if (T.GetComponent<InteractableObject>().Interactable)
                                             {
                                                 Debug.Log("In the Final if");
-                                                Navigation.SetDestination(T.position);
+                                               Navigation.SetDestination(T.position);
 
                                                 NPCAnim.SetBool("InteractItem", true);
                                                 T.transform.SetParent(transform);
@@ -437,73 +437,80 @@ public class NPC : MonoBehaviour {
     {
         Debug.Log("The interaction Has stopped");
         interactObject = false;
-        transform.DetachChildren();
+        transform.Find("ItemNode").SetParent(null);
+        NPCAnim.SetBool("InteractItem", false);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (MyState != State.Event)
-        {
-            if (other.name == "Node1")
+        
+            if (other.name == "RoomA")
             {
+            Debug.Log("Yes");
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode1;
                 NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
-            else if (other.name == "Node2")
+            else if (other.name == "RoomB")
             {
-                MyState = State.Idle;
+            Debug.Log("Yes");
+            MyState = State.Idle;
                 CurrentNode = Node.AtNode2;
                 NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
-            else if (other.name == "Node3")
+            else if (other.name == "RoomC")
             {
-                MyState = State.Idle;
+            Debug.Log("Yes");
+            MyState = State.Idle;
                 CurrentNode = Node.AtNode3;
                 NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
-            else if (other.name == "Node4")
+            else if (other.name == "RoomD")
             {
-                MyState = State.Idle;
+            Debug.Log("Yes");
+            MyState = State.Idle;
                 CurrentNode = Node.AtNode4;
                 NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
-            else if (other.name == "Node5")
+            else if (other.name == "RoomE")
             {
-                MyState = State.Idle;
+            Debug.Log("Yes");
+            MyState = State.Idle;
                 CurrentNode = Node.AtNode5;
                 NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
-            else if (other.name == "Node6")
+            else if (other.name == "RoomF")
             {
-                MyState = State.Idle;
+            Debug.Log("Yes");
+            MyState = State.Idle;
                 CurrentNode = Node.AtNode6;
                 NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
-            else if (other.name == "Node7")
+            else if (other.name == "RoomG")
             {
-                MyState = State.Idle;
+            Debug.Log("Yes");
+            MyState = State.Idle;
                 CurrentNode = Node.AtNode7;
                 NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Hub")
             {
-
-                MyState = State.Idle;
+            Debug.Log("Yes");
+            MyState = State.Idle;
                 CurrentNode = Node.AtHub;
                 NPCAnim.SetBool("Walking", false);
             }
             
-        }
+        
 
         if (other.name == "EndPoint")
         {

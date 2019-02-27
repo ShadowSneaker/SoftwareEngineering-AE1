@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6048240b8e7f19b468236e62967fae07
+guid: 190902a1828a3e348a807dfc865fe5ba
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -75,9 +75,9 @@ ModelImporter:
     100138: mixamorig:Spine
     100140: mixamorig:Spine1
     100142: mixamorig:Spine2
-    100144: //RootNode
-    100146: Shoes
-    100148: Tops
+    100144: Shoes
+    100146: Tops
+    100148: //RootNode
     400000: Beards
     400002: Body
     400004: Bottoms
@@ -150,9 +150,9 @@ ModelImporter:
     400138: mixamorig:Spine
     400140: mixamorig:Spine1
     400142: mixamorig:Spine2
-    400144: //RootNode
-    400146: Shoes
-    400148: Tops
+    400144: Shoes
+    400146: Tops
+    400148: //RootNode
     2100000: No Name
     4300000: Eyes
     4300002: default
