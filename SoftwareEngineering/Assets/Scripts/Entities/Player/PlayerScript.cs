@@ -106,4 +106,11 @@ public class PlayerScript : EntityScript
             CamPointToPlayer = true;
         }
     }
+
+
+    public void SetPosition(Transform NewTransform)
+    {
+        transform.position = NewTransform.position;
+        transform.rotation = NewTransform.rotation;
+    }
 }
