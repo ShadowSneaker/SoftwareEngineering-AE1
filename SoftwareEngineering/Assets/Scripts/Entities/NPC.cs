@@ -321,7 +321,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node Hub");
                                     Once = true;
-
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(TheHub.position);
 
 
@@ -332,7 +332,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node 1");
                                     Once = true;
-
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(Node1.position);
 
                                     break;
@@ -341,6 +341,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node 2");
                                     Once = true;
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(Node2.position);
 
                                     break;
@@ -349,6 +350,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node 3");
                                     Once = true;
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(Node3.position);
 
                                     break;
@@ -357,6 +359,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node 4");
                                     Once = true;
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(Node4.position);
 
                                     break;
@@ -365,6 +368,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node 5");
                                     Once = true;
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(Node5.position);
 
                                     break;
@@ -373,6 +377,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node 6");
                                     Once = true;
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(Node6.position);
 
                                     break;
@@ -381,6 +386,7 @@ public class NPC : MonoBehaviour {
                                 {
                                     Debug.Log("Moving to node 7");
                                     Once = true;
+                                    NPCAnim.SetBool("Walking", true);
                                     Navigation.SetDestination(Node7.position);
 
                                     break;
@@ -394,6 +400,7 @@ public class NPC : MonoBehaviour {
                     // the NPC should be forced into the EVent state at the begining.
                     if(EventTriggered)
                     {
+                        NPCAnim.SetBool("Walking", true);
                         Navigation.SetDestination(Travelpoint.position);
                     }
 
@@ -443,42 +450,49 @@ public class NPC : MonoBehaviour {
             {
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode1;
+                NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Node2")
             {
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode2;
+                NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Node3")
             {
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode3;
+                NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Node4")
             {
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode4;
+                NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Node5")
             {
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode5;
+                NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Node6")
             {
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode6;
+                NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Node7")
             {
                 MyState = State.Idle;
                 CurrentNode = Node.AtNode7;
+                NPCAnim.SetBool("Walking", false);
                 Once = false;
             }
             else if (other.name == "Hub")
@@ -486,14 +500,19 @@ public class NPC : MonoBehaviour {
 
                 MyState = State.Idle;
                 CurrentNode = Node.AtHub;
+                NPCAnim.SetBool("Walking", false);
             }
-            else if (other.name == "EndPoint")
-            {
-                MyState = State.Idle;
-                EventTriggered = false;
-            }
+            
         }
-    
+
+        if (other.name == "EndPoint")
+        {
+            MyState = State.Idle;
+            Debug.Log("Are you running");
+            EventTriggered = false;
+            NPCAnim.SetBool("Walking", false);
+        }
+
     }
 
 
