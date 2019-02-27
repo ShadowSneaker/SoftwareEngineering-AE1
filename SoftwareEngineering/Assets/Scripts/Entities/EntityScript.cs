@@ -114,7 +114,7 @@ public class EntityScript : MonoBehaviour
     // Damages this entity based on the imputted amount.
     // @param Amount - The amount of damage the attack will inflict onto this entity.
     // @return - A struct Representing the damage the entity applied along with how much health the entity has left after the attack.
-    public SDamageInfo ApplyDamage(float Amount)
+    public void ApplyDamage(float Amount)
     {
         if (!IsDead && !Invincible && !Invulnerable && Amount > 0.0f)
         {
@@ -144,7 +144,7 @@ public class EntityScript : MonoBehaviour
                 StartCoroutine(StartImmunityFrames());
                 Info.KilledEntity = false;
             }
-            return Info;
+            //return Info;
         }
         else
         {
@@ -153,7 +153,7 @@ public class EntityScript : MonoBehaviour
             Info.DamageDealt = 0.0f;
             Info.RemainingHealth = Health;
             Info.AttackIgnored = true;
-            return Info;
+            //return Info;
         }
     }
 
@@ -303,14 +303,14 @@ public class EntityScript : MonoBehaviour
 
 
     // makes the entity jump.
-    public void Jump()
-    {
-        if (!IsDead && Controller && Controller.isGrounded)
-        {
-            //JumpVal = JumpStrength * Time.deltaTime;
-            ApplyDamage(MaxHealth / 2);
-        }
-    }
+    //public void Jump()
+    //{
+    //    if (!IsDead && Controller && Controller.isGrounded)
+    //    {
+    //        //JumpVal = JumpStrength * Time.deltaTime;
+    //        ApplyDamage(MaxHealth / 2);
+    //    }
+    //}
 
 
 

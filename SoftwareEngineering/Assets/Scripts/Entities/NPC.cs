@@ -901,4 +901,15 @@ public class NPC : MonoBehaviour {
         }
 
     }
+
+
+    public void SetEventTriggered(bool Triggered)
+    {
+        EventTriggered = Triggered;
+    }
+
+    public void SetTravelPoint(Transform Point)
+    {
+        Travelpoint = Point;
+    }
 }
