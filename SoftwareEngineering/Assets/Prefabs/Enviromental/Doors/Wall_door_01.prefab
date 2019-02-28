@@ -58,8 +58,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530052705772308}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -11.1, y: 0.1, z: 15.1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.1000004, y: -6.405, z: -11.094002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4949053764045276}
@@ -328,7 +328,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  DoorOpenSound: {fileID: 0}
+  DoorOpenSound: {fileID: 8300000, guid: d5a99f7f619c4364380993a4b8fa2070, type: 3}
   DoorCloseSound: {fileID: 0}
   LockedSound: {fileID: 0}
   Locked: 0

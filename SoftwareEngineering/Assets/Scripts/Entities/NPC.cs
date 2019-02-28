@@ -57,7 +57,7 @@ public class NPC : MonoBehaviour {
     public bool interactObject;
 
     //bool for the event
-    public bool EventTriggered = false;
+    private bool EventTriggered = false;
     public bool AIOn = false;
 
 
@@ -82,7 +82,16 @@ public class NPC : MonoBehaviour {
         // at the start the NPC is forced into the event and thats the only time the state is entered
         MyState = State.Event;
 
-       
+       if(transform.name == "Clown")
+       {
+           EventTriggered = true;
+       }
+
+       if(transform.name == "mad doctor")
+       {
+           EventTriggered = false;
+       }
+
 	}
 	
 	

@@ -19,7 +19,9 @@ public class InventorySlot : MonoBehaviour
          item = newItem;
          Icon.sprite = item.Image;
          Icon.enabled = true;
-         
+
+        InfoText = ItemInfo.GetComponentsInChildren<Text>();
+
          InfoText[0].text = "Name:" + item.ItemName;
         InfoText[1].text = "Description: " + item.Description;
      }

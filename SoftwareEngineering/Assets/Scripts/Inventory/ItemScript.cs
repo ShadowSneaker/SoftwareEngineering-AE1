@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class ItemScript : MonoBehaviour
+public class ItemScript : ScriptableObject
 {
 
     // Should this item be removed when it is used.
