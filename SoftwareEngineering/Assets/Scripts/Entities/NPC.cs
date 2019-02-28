@@ -91,6 +91,7 @@ public class NPC : MonoBehaviour {
        {
            EventTriggered = false;
        }
+       // also do once for the garve digger and ghost to make sure
 
 	}
 	

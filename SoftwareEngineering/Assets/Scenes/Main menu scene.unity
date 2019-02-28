@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.451122, g: 0.50091326, b: 0.5739862, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2772,7 +2772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraAnim: {fileID: 33558989}
   waitTime: 5
-  BeginingScene: Byrons Testing
+  BeginingScene: MainHouse
   Settings: {fileID: 1067844034}
   StartButton: {fileID: 1549666523}
   MainButton: {fileID: 1719573382}
